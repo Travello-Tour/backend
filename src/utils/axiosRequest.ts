@@ -17,7 +17,6 @@ async function axiosRequest(
       },
       ...options,
     });
-    console.log(response.data);
     return response.data;
   } catch (error) {
     // Обработка ошибки
