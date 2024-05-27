@@ -5,7 +5,7 @@ export class TourController {
   constructor(private readonly tourService: TourService) {}
 
   @Get(':id')
-  getTourById(@Param('id') id: string) {
+  getTourById(@Param('id') id: number) {
     return this.tourService.getApiData(id);
   }
 }
