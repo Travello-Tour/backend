@@ -5,16 +5,19 @@ FROM node:18-alpine
 WORKDIR /usr/src/app
 
 # Копируйте файлы пакетов в контейнер
-COPY package*.json./
+COPY package*.json ./
 
 # Установите зависимости
 RUN npm install
 
 # Копируйте исходный код приложения в контейнер
-COPY package*.json./
+COPY . .
 
 # Соберите приложение
 RUN npm run build
+
+# Укажите порт, который будет использован приложением
+EXPOSE 3000
 
 # Запустите приложение
 CMD ["npm", "run", "start:prod"]
