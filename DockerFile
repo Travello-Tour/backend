@@ -1,5 +1,5 @@
 # Используйте официальный образ Node.js
-FROM node:14
+FROM node:18-alpine
 
 # Установите рабочую директорию внутри контейнера
 WORKDIR /usr/src/app
