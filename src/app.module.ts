@@ -30,7 +30,7 @@ import { VariablesModule } from './variables/variables.module';
         POSTGRES_USER: Joi.string().required(),
         POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
-        PORT: Joi.number(),
+        PORT: Joi.number().default(3000),
       })
     }),
     DatabaseModule,

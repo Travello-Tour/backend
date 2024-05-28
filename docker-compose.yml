@@ -10,11 +10,9 @@ services:
     env_file:
       - docker.env
     networks:
-      - postgres
+      - app-network
 
   pgadmin:
-    links:
-      - postgres:postgres
     container_name: pgadmin
     image: dpage/pgadmin4
     ports:
@@ -24,7 +22,7 @@ services:
     env_file:
       - docker.env
     networks:
-      - postgres
+      - app-network
 
   nest:
     build: .
@@ -39,7 +37,5 @@ services:
       - app-network
 
 networks:
-  postgres:
-    driver: bridge
   app-network:
     driver: bridge
