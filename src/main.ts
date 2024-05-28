@@ -9,7 +9,8 @@ async function bootstrap() {
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     allowedHeaders: 'Content-Type, Accept',
     credentials: true,
-  })
+  });
+
   const config = new DocumentBuilder()
     .setTitle('API для туров')
     .setDescription('API description and examples')
@@ -17,7 +18,7 @@ async function bootstrap() {
     .addTag('API')
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api-docs', app, document);
+  SwaggerModule.setup('documentation', app, document);
 
   await app.listen(3000);
 }
