@@ -22,7 +22,7 @@ async function bootstrap() {
   const config = new DocumentBuilder()
     .setTitle('API для туров')
     .setDescription('API description and examples')
-    .setVersion('1.0')
+    .setVersion('2.0')
     .addTag('API')
     .build();
   const document = SwaggerModule.createDocument(app, config);
