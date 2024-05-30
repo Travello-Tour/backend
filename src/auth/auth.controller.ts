@@ -10,6 +10,7 @@ import {
   Put,
 } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
+import { AuthDto } from './dto/auth.dto';
 import { User } from './auth.entity';
 import { AuthService } from './auth.service';
 @ApiTags('auth')
@@ -24,8 +25,8 @@ export class AuthController {
 
   @Post('login')
   @ApiOperation({ summary: 'Авторизация пользователя' })
-  findOne(@Body() user: User): Promise<User> {
-    return this.authService.findUser(user.email, user.password);
+  async auth(@Body() authDto: AuthDto): Promise<User> {
+    return await this.authService.findUser(authDto.email, authDto.password);
   }
 
   @Put(':id')
