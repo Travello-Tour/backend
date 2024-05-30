@@ -9,7 +9,7 @@ import {
   Post,
   Put,
 } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { User } from './auth.entity';
 import { AuthService } from './auth.service';
 @ApiTags('auth')
@@ -17,16 +17,19 @@ import { AuthService } from './auth.service';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
   @Post()
+  @ApiOperation({ summary: 'Регистрация нового пользователя' })
   async create(@Body() user: User) {
     return await this.authService.create(user);
   }
 
   @Post('login')
+  @ApiOperation({ summary: 'Авторизация пользователя' })
   findOne(@Body() user: User): Promise<User> {
     return this.authService.findUser(user.email, user.password);
   }
 
   @Put(':id')
+  @ApiOperation({ summary: 'Полное обновление данных пользователя' })
   async replaceUser(
     @Param('id', ParseIntPipe) id: number,
     @Body() user: Partial<User>,
@@ -36,6 +39,7 @@ export class AuthController {
   }
 
   @Patch(':id')
+  @ApiOperation({ summary: 'Частичное обновление данных пользователя' })
   async updateUser(
     @Param('id', ParseIntPipe) id: number,
     @Body() user: Partial<User>,
@@ -45,6 +49,7 @@ export class AuthController {
   }
 
   @Delete(':id')
+  @ApiOperation({ summary: 'Удалить аккаунт' })
   async remove(
     @Param('id') id: string,
   ): Promise<{ message: string; status: number }> {
