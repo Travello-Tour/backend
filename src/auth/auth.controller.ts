@@ -17,21 +17,13 @@ import { AuthService } from './auth.service';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
   @Post()
-  async create(@Body() user: User): Promise<User> {
-    try {
-      return await this.authService.create(user);
-    } catch (error: any) {
-      throw new BadRequestException(error.message);
-    }
+  async create(@Body() user: User) {
+    return await this.authService.create(user);
   }
 
   @Post('login')
   findOne(@Body() user: User): Promise<User> {
-    try {
-      return this.authService.findUser(user.email, user.password);
-    } catch (error: any) {
-      throw new BadRequestException(error.message);
-    }
+    return this.authService.findUser(user.email, user.password);
   }
 
   @Put(':id')
