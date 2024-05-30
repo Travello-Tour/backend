@@ -1,5 +1,6 @@
 import { NestFactory } from '@nestjs/core';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import * as session from 'express-session';
 import { AppModule } from './app.module';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule, { cors: true });
@@ -11,6 +12,13 @@ async function bootstrap() {
     credentials: true,
   });
 
+  app.use(
+    session({
+      secret: process.env.SESSION_SECRET || 'secret', // Секрет для подписи сеанса
+      resave: false,
+      saveUninitialized: false,
+    }),
+  );
   const config = new DocumentBuilder()
     .setTitle('API для туров')
     .setDescription('API description and examples')
