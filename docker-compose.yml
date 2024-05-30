@@ -24,17 +24,17 @@ services:
     networks:
       - app-network
 
-  # nest:
-  #   build: .
-  #   container_name: nestjs-app
-  #   env_file:
-  #     - .env
-  #   ports:
-  #     - '3000:3000'
-  #   depends_on:
-  #     - postgres
-  #   networks:
-  #     - app-network
+  nest:
+    build: .
+    container_name: nestjs-app
+    env_file:
+      - .env
+    ports:
+      - '3000:3000'
+    depends_on:
+      - postgres
+    networks:
+      - app-network
 
 networks:
   app-network:

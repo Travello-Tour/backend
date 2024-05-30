@@ -14,7 +14,7 @@ async function bootstrap() {
 
   app.use(
     session({
-      secret: process.env.SESSION_SECRET || 'secret', // Секрет для подписи сеанса
+      secret: process.env.SESSION_SECRET || 'secret',
       resave: false,
       saveUninitialized: false,
     }),
