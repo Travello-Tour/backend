@@ -1,5 +1,5 @@
 import { Controller, Get } from '@nestjs/common';
-import { ApiTags } from '@nestjs/swagger';
+import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { CalendarPresetsService } from './calendar-presets.service';
 
 @ApiTags('API')
@@ -10,6 +10,7 @@ export class CalendarPresetsController {
   ) {}
 
   @Get()
+  @ApiOperation({ summary: 'Календарный пресет' })
   getData() {
     return this.calendarPresetsService.getApiData();
   }
